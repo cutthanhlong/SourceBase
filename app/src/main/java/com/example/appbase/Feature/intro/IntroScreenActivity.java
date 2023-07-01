@@ -16,7 +16,7 @@ import com.example.appbase.databinding.ActivityIntroBinding;
 public class IntroScreenActivity extends BaseActivity<ActivityIntroBinding> {
     ImageView[] dots = null;
     int positionPage = 0;
-    String[] title;
+    String[] title, content;
     IntroAdapter introAdapter;
 
     @Override
@@ -28,6 +28,7 @@ public class IntroScreenActivity extends BaseActivity<ActivityIntroBinding> {
     public void getData() {
         dots = new ImageView[]{findViewById(R.id.cricle_1), findViewById(R.id.cricle_2), findViewById(R.id.cricle_3)};
         title = new String[]{getResources().getString(R.string.title_intro1), getResources().getString(R.string.title_intro2), getResources().getString(R.string.title_intro3)};
+        content = new String[]{getResources().getString(R.string.content_intro1), getResources().getString(R.string.content_intro2), getResources().getString(R.string.content_intro3)};
 
         introAdapter = new IntroAdapter(this);
     }
@@ -69,6 +70,7 @@ public class IntroScreenActivity extends BaseActivity<ActivityIntroBinding> {
 
     private void changeContentInit(int position) {
         binding.tvTitle.setText(title[position]);
+        binding.tvContent.setText(content[position]);
         for (int i = 0; i < 3; i++) {
             if (i == position) dots[i].setImageResource(R.drawable.ic_dot_selected);
             else dots[i].setImageResource(R.drawable.ic_dot_not_select);

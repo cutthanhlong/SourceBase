@@ -34,7 +34,7 @@ public class AboutScreenActivity extends BaseActivity<ActivityAboutBinding> {
         binding.btnBack.setOnClickListener(view -> onBackPressed());
 
         binding.btnPolicy.setOnClickListener(view -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://firebasestorage.googleapis.com/v0/b/flashlight-2e019.appspot.com/o/Privacy Policy .html?alt=media&token=6a28089e-1e25-4263-9fa7-556b93d1d14a&_gl=1*1r9f2sk*_ga*NjkyOTgwOTE4LjE2ODI2NzIyNzg.*_ga_CW55HF8NVT*MTY4NTk1MDE5OS45LjEuMTY4NTk1MjI4MC4wLjAuMA..")));
+//            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("link")));
         });
     }
 
