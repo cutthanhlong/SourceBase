@@ -40,6 +40,12 @@
     <string name="content_intro1">Content intro 1</string>
     <string name="content_intro2">Content intro 2</string>
     <string name="content_intro3">Content intro 3</string>
+    <string name="agree">Agree</string>
+    <string name="permission">Permission</string>
+    <string name="grant_these_permissions_to_use_app_name">Grant these permissions to use \'app name\'</string>
+    <string name="camera">Camera</string>
+    <string name="storage">Storage</string>
+    <string name="note_you_can_also_give_permissions_in_settings_apps_app_name_permissions"><![CDATA[Note: You can also give permissions in Settings --> apps --> App Name -->Permissions]]></string>
 
 
 </resources>
