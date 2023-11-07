@@ -29,36 +29,33 @@ public class RatingDialog extends BaseDialog<DialogRatingAppBinding> {
 
     @Override
     protected void initView() {
-        binding.rtb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                String getRating = String.valueOf(binding.rtb.getRating());
-                switch (getRating) {
-                    case "1.0":
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
-                        binding.imgIcon.setImageResource(R.drawable.rating_1);
-                        break;
-                    case "2.0":
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
-                        binding.imgIcon.setImageResource(R.drawable.rating_2);
-                        break;
-                    case "3.0":
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
-                        binding.imgIcon.setImageResource(R.drawable.rating_3);
-                        break;
-                    case "4.0":
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
-                        binding.imgIcon.setImageResource(R.drawable.rating_4);
-                        break;
-                    case "5.0":
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
-                        binding.imgIcon.setImageResource(R.drawable.rating_5);
-                        break;
-                    default:
-                        binding.btnRateUs.setText(context.getResources().getString(R.string.rate_us));
-                        binding.imgIcon.setImageResource(R.drawable.rating_0);
-                        break;
-                }
+        binding.rtb.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            String getRating = String.valueOf(binding.rtb.getRating());
+            switch (getRating) {
+                case "1.0":
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
+                    binding.imgIcon.setImageResource(R.drawable.rating_1);
+                    break;
+                case "2.0":
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
+                    binding.imgIcon.setImageResource(R.drawable.rating_2);
+                    break;
+                case "3.0":
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
+                    binding.imgIcon.setImageResource(R.drawable.rating_3);
+                    break;
+                case "4.0":
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
+                    binding.imgIcon.setImageResource(R.drawable.rating_4);
+                    break;
+                case "5.0":
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.thank_you));
+                    binding.imgIcon.setImageResource(R.drawable.rating_5);
+                    break;
+                default:
+                    binding.btnRateUs.setText(context.getResources().getString(R.string.rate_us));
+                    binding.imgIcon.setImageResource(R.drawable.rating_0);
+                    break;
             }
         });
     }
@@ -66,7 +63,6 @@ public class RatingDialog extends BaseDialog<DialogRatingAppBinding> {
     @Override
     protected void bindView() {
         binding.btnRateUs.setOnClickListener(view -> {
-            onClickAnimation(view);
             if (binding.rtb.getRating() == 0) {
                 return;
             }
@@ -79,10 +75,7 @@ public class RatingDialog extends BaseDialog<DialogRatingAppBinding> {
             }
         });
 
-        binding.btnNotNow.setOnClickListener(view -> {
-            onClickAnimation(view);
-            iClickDialogRate.later();
-        });
+        binding.btnNotNow.setOnClickListener(view -> iClickDialogRate.later());
     }
 
     public void init(IClickDialogRate iClickDialogRate) {

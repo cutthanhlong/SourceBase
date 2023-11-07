@@ -44,15 +44,24 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
 
     @Override
     public void bindView() {
-        binding.rlLanguage.setOnClickListener(v -> startNextActivity(LanguageActivity.class, null));
+        binding.rlLanguage.setOnClickListener(v -> {
+            onClickAnimation(v);
+            startNextActivity(LanguageActivity.class, null);
+        });
 
         binding.rlRate.setOnClickListener(v -> rateApp(false));
 
         binding.rlShare.setOnClickListener(v -> shareApp());
 
-        binding.rlPolicy.setOnClickListener(v -> startNextActivity(PolicyActivity.class, null));
+        binding.rlPolicy.setOnClickListener(v -> {
+            onClickAnimation(v);
+            startNextActivity(PolicyActivity.class, null);
+        });
 
-        binding.rlMain.setOnClickListener(v -> startNextActivity(MainActivity.class, null));
+        binding.rlMain.setOnClickListener(v -> {
+            onClickAnimation(v);
+            startNextActivity(MainActivity.class, null);
+        });
     }
 
     private void rateApp(boolean isQuitApp) {
@@ -67,7 +76,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
                 Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
                 sendIntent.setData(uri);
                 try {
-                    if (isQuitApp){
+                    if (isQuitApp) {
                         finishAffinity();
                     }
                     startActivity(Intent.createChooser(sendIntent, getString(R.string.Send_Email)));
@@ -89,7 +98,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
                             binding.rlRate.setVisibility(View.GONE);
                             SharePrefUtils.forceRated(HomeActivity.this);
                             ratingDialog.dismiss();
-                            if (isQuitApp){
+                            if (isQuitApp) {
                                 finishAffinity();
                             }
                         });
@@ -102,7 +111,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
             @Override
             public void later() {
                 ratingDialog.dismiss();
-                if (isQuitApp){
+                if (isQuitApp) {
                     finishAffinity();
                 }
             }
@@ -140,7 +149,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
 
         try {
             exitAppDialog.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

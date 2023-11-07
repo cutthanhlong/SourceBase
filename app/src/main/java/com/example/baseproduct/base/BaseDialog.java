@@ -24,8 +24,6 @@ public abstract class BaseDialog<VB extends ViewBinding> extends Dialog {
 
     protected abstract void bindView();
 
-    Animation animation;
-
     public BaseDialog(@NonNull Context context, boolean canAble) {
         super(context, R.style.BaseDialog);
         SystemUtil.setLocale(context);
@@ -35,13 +33,8 @@ public abstract class BaseDialog<VB extends ViewBinding> extends Dialog {
 
         setCancelable(canAble);
 
-        animation = AnimationUtils.loadAnimation(context, R.anim.onclick);
-
         initView();
         bindView();
     }
 
-    public void onClickAnimation(View v){
-        v.startAnimation(animation);
-    }
 }
