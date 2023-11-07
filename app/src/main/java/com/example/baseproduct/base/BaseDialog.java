@@ -2,7 +2,10 @@ package com.example.baseproduct.base;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.viewbinding.ViewBinding;
@@ -21,6 +24,8 @@ public abstract class BaseDialog<VB extends ViewBinding> extends Dialog {
 
     protected abstract void bindView();
 
+    Animation animation;
+
     public BaseDialog(@NonNull Context context, boolean canAble) {
         super(context, R.style.BaseDialog);
         SystemUtil.setLocale(context);
@@ -29,8 +34,14 @@ public abstract class BaseDialog<VB extends ViewBinding> extends Dialog {
         setContentView(binding.getRoot());
 
         setCancelable(canAble);
+
+        animation = AnimationUtils.loadAnimation(context, R.anim.onclick);
+
         initView();
         bindView();
     }
 
+    public void onClickAnimation(View v){
+        v.startAnimation(animation);
+    }
 }

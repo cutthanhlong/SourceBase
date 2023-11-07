@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,8 @@ public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActi
 
     public abstract void bindView();
 
+    Animation animation;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         SystemUtil.setLocale(this);
@@ -34,9 +38,14 @@ public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActi
         setContentView(binding.getRoot());
 
         hideFullNavigation();
+        animation = AnimationUtils.loadAnimation(this, R.anim.onclick);
 
         initView();
         bindView();
+    }
+
+    public void onClickAnimation(View v){
+        v.startAnimation(animation);
     }
 
     public void startNextActivity(Class activity, Bundle bundle) {

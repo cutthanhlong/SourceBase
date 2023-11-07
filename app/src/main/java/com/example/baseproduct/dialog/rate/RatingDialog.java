@@ -66,6 +66,7 @@ public class RatingDialog extends BaseDialog<DialogRatingAppBinding> {
     @Override
     protected void bindView() {
         binding.btnRateUs.setOnClickListener(view -> {
+            onClickAnimation(view);
             if (binding.rtb.getRating() == 0) {
                 return;
             }
@@ -78,7 +79,10 @@ public class RatingDialog extends BaseDialog<DialogRatingAppBinding> {
             }
         });
 
-        binding.btnNotNow.setOnClickListener(view -> iClickDialogRate.later());
+        binding.btnNotNow.setOnClickListener(view -> {
+            onClickAnimation(view);
+            iClickDialogRate.later();
+        });
     }
 
     public void init(IClickDialogRate iClickDialogRate) {

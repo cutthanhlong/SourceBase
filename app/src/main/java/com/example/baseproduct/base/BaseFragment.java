@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,8 @@ public abstract class BaseFragment<VB extends ViewBinding> extends Fragment {
 
     public abstract void bindView();
 
+    Animation animation;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,8 +41,14 @@ public abstract class BaseFragment<VB extends ViewBinding> extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         SystemUtil.setLocale(getContext());
 
+        animation = AnimationUtils.loadAnimation(requireActivity(), R.anim.onclick);
+
         initView();
         bindView();
+    }
+
+    public void onClickAnimation(View v){
+        v.startAnimation(animation);
     }
 
     public void startNextActivity(Activity activity, Bundle bundle) {

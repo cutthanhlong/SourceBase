@@ -2,6 +2,8 @@ package com.example.baseproduct.ui.main;
 
 import android.view.View;
 
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.baseproduct.base.BaseActivity;
 import com.example.baseproduct.databinding.ActivityMainBinding;
 
@@ -17,11 +19,36 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void initView() {
         binding.viewTop.tvToolBar.setText("MainActivity");
         binding.viewTop.ivCheck.setVisibility(View.INVISIBLE);
+
+        binding.viewPager.setOffscreenPageLimit(ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT);
+        MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager(), getLifecycle());
+        binding.viewPager.setAdapter(mainAdapter);
+        binding.viewPager.setUserInputEnabled(false);
     }
 
     @Override
     public void bindView() {
         binding.viewTop.ivBack.setOnClickListener(v -> onBackPressed());
+
+        binding.rlFragmentA.setOnClickListener(view -> setPage(view, 0));
+
+        binding.rlFragmentB.setOnClickListener(view -> setPage(view, 1));
+    }
+
+    public void setPage(View view, int pos){
+        onClickAnimation(view);
+        binding.viewPager.setCurrentItem(pos, false);
+
+        switch (pos){
+            case 0:
+
+                break;
+
+            case 1:
+
+                break;
+        }
+
     }
 
     @Override

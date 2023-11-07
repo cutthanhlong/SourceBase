@@ -20,6 +20,7 @@ public class PermissionActivity extends BaseActivity<ActivityPermissionBinding> 
     @Override
     public void bindView() {
         binding.tvContinue.setOnClickListener(v -> {
+            onClickAnimation(v);
             startNextActivity(HomeActivity.class, null);
             finishAffinity();
         });

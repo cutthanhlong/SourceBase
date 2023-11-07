@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.baseproduct.base.BaseDialog;
 import com.example.baseproduct.databinding.DialogExitAppBinding;
-import com.example.baseproduct.dialog.rate.IClickDialogRate;
 
 public class ExitAppDialog extends BaseDialog<DialogExitAppBinding> {
     IClickDialogExit iBaseListener;
@@ -28,9 +27,16 @@ public class ExitAppDialog extends BaseDialog<DialogExitAppBinding> {
 
     @Override
     protected void bindView() {
-        binding.btnCancelQuitApp.setOnClickListener(view -> iBaseListener.cancel());
+        binding.btnCancelQuitApp.setOnClickListener(view -> {
+            onClickAnimation(view);
+            iBaseListener.cancel();
+        });
 
-        binding.btnQuitApp.setOnClickListener(view -> iBaseListener.quit());
+        binding.btnQuitApp.setOnClickListener(view -> {
+            onClickAnimation(view);
+            iBaseListener.quit();
+        });
+
     }
 
     public void init(IClickDialogExit iBaseListener) {

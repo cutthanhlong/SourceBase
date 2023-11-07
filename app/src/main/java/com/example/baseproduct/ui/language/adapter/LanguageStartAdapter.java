@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,10 @@ public class LanguageStartAdapter extends RecyclerView.Adapter<LanguageStartAdap
         if (languageModel == null) {
             return;
         }
+
+        holder.rdbCheck.setVisibility(View.GONE);
         holder.tvLang.setText(languageModel.getName());
+
         if (languageModel.getActive()) {
             holder.layoutItem.setBackgroundResource(R.drawable.bg_lang_item_s);
             holder.tvLang.setTextColor(context.getColor(R.color.color_D82D25));
@@ -98,12 +102,14 @@ public class LanguageStartAdapter extends RecyclerView.Adapter<LanguageStartAdap
     }
 
     public static class LanguageViewHolder extends RecyclerView.ViewHolder {
+        private final RadioButton rdbCheck;
         private final TextView tvLang;
         private final LinearLayout layoutItem;
         private final ImageView icLang;
 
         public LanguageViewHolder(@NonNull View itemView) {
             super(itemView);
+            rdbCheck = itemView.findViewById(R.id.rdbCheck);
             icLang = itemView.findViewById(R.id.icLang);
             tvLang = itemView.findViewById(R.id.tvLang);
             layoutItem = itemView.findViewById(R.id.layoutItem);
