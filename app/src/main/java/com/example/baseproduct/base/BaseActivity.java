@@ -44,13 +44,13 @@ public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActi
         bindView();
     }
 
-    public void onClickAnimation(View v){
+    public void onClickAnimation(View v) {
         v.startAnimation(animation);
     }
 
     public void startNextActivity(Class activity, Bundle bundle) {
         Intent intent = new Intent(this, activity);
-        if (bundle == null){
+        if (bundle == null) {
             bundle = new Bundle();
         }
         intent.putExtras(bundle);
